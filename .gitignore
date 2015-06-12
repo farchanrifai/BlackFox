@@ -33,6 +33,9 @@ modules.builtin
 *.img
 *.patch
 *.gcno
+*.rej
+*.orig
+patch-3.*
 
 #
 # Top-level generic files
