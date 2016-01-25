@@ -20,8 +20,8 @@ inline unsigned long int_sqrt(unsigned long x)
 	register unsigned long place;
 	register unsigned long root = 0;
 
-	if (x <= 1)
-		return x;
+	 if (x <= 1)
+ 		return x;
 
 	place = 1UL << (BITS_PER_LONG - 2);
 
