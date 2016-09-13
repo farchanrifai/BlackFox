@@ -1217,7 +1217,7 @@ static void audit_log_execve_info(struct audit_context *context,
 				  struct audit_buffer **ab,
 				  struct audit_aux_data_execve *axi)
 {
-long len_max;
+	long len_max;
 	long len_rem;
 	long len_full;
 	long len_buf;
