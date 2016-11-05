@@ -1,7 +1,7 @@
 /*
- * drivers/input/touchscreen/wake_helpers.c
+ * include/linux/input/sweep2wake.h
  *
- *
+ * Copyright (c) 2013, Dennis Rassmann <showp1984@gmail.com>
  * Copyright (c) 2015, Vineeth Raj <contact.twn@openmailbox.org>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -19,12 +19,9 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
-#include <linux/input/wake_helpers.h>
+#ifndef _LINUX_SWEEP2WAKE_H
+#define _LINUX_SWEEP2WAKE_H
 
-int is_headset_in_use(void) {
-	return var_is_headset_in_use;
-}
+extern int s2w_switch, s2w_s2sonly;
 
-int in_phone_call(void) {
-	return var_in_phone_call;
-}
+#endif	/* _LINUX_SWEEP2WAKE_H */
