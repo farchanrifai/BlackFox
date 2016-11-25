@@ -64,6 +64,7 @@ zipping() {
 rm -rf $OUT_DIR/BlackFox*.zip
 rm -rf $OUT_DIR/zImage
 #rm -rf $OUT_DIR/dtb
+for i in `find -name *.ko`; do cp $i ~/xero/AnyKernel2/modules/; done
 cp $KERN_IMG $OUT_DIR/zImage
 #cp $KERN_DTB $OUT_DIR/dtb
 cd $OUT_DIR
