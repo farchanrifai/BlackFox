@@ -63,9 +63,9 @@ tools_sk/dtbtool -o $KERN_DTB -s 2048 -p $KERNEL_DIR/scripts/dtc/ $KERNEL_DIR/ar
 zipping() {
 rm -rf $OUT_DIR/BlackFox*.zip
 rm -rf $OUT_DIR/zImage
-rm -rf $OUT_DIR/dtb
+#rm -rf $OUT_DIR/dtb
 cp $KERN_IMG $OUT_DIR/zImage
-cp $KERN_DTB $OUT_DIR/dtb
+#cp $KERN_DTB $OUT_DIR/dtb
 cd $OUT_DIR
 echo "is it a test build ..? (y/n) :"
 read buildtype
@@ -73,9 +73,9 @@ if [ $buildtype == 'y' ]
 then
 echo "test build number?:"
 read BN
-zip -r BlackFox.kernel-cancro.R$VER-test-$BN-uber.zip *
+zip -r BlackFox.kernel-cancro.R$VER-test-$BN.zip *
 else
-zip -r BlackFox.kernel-cancro.R$VER-uber-$(date +"%Y%m%d").zip *
+zip -r BlackFox.kernel-cancro.R$VER-$(date +"%Y%m%d").zip *
 fi
 }
 
