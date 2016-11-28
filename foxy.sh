@@ -185,7 +185,7 @@ case "$dchoice" in
 esac
 done
 echo -e "${bldgrn}"
-echo "Foxy-$FOXY_F-$(date +%d-%m_%H%M).zip"
+echo "Foxy-cancro-$FOXY_F-$(date +%d-%m_%H%M).zip"
 echo -e "${bldred}"
 echo "################################################################################"
 echo -e "${bldgrn}"
