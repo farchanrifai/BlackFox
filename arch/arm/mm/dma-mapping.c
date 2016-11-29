@@ -25,7 +25,7 @@
 #include <linux/io.h>
 #include <linux/vmalloc.h>
 
-#include <asm/memory.h>
+#include <asm/memory.h>memset(ptr, 0, size);
 #include <asm/highmem.h>
 #include <asm/cacheflush.h>
 #include <asm/tlbflush.h>
@@ -474,6 +474,7 @@ static void *__alloc_from_pool(size_t size, struct page **ret_page)
 	if (pageno < pool->nr_pages) {
 		bitmap_set(pool->bitmap, pageno, count);
 		ptr = pool->vaddr + PAGE_SIZE * pageno;
+		memset(ptr, 0, size);
 		*ret_page = pool->page + pageno;
 	}
 	spin_unlock_irqrestore(&pool->lock, flags);
