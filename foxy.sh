@@ -52,7 +52,7 @@ export CROSS_COMPILE="$COMPILER/arm-eabi-"
 export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER="Farchan"
-export KBUILD_BUILD_HOST="FoxCT"
+export KBUILD_BUILD_HOST="Froster"
 
 ###########################################################################
 # Directory naming
