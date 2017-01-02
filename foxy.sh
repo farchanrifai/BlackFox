@@ -57,20 +57,20 @@ export KBUILD_BUILD_HOST="Froster"
 ###########################################################################
 # Directory naming
 echo -e "${bldblu}"
-while read -p "Which branch (cm/miui)? " mchoice
+while read -p "Is it dttw version (y/n)? " mchoice
 echo -e "${bldred}"
 do
 case "$mchoice" in
-	cm|CM )
-		FOXY_F="cm"
+	y|Y )
+		FOXY_F="dttw"
 		echo
-		echo "Named cm"
+		echo "Named dttw"
 		break
 		;;
-	m|M )
-		FOXY_F="miui"
+	n|N )
+		FOXY_F="no_dttw"
 		echo
-		echo "Named miui"
+		echo "Named no_dttw"
 		break
 		;;
 	* )
@@ -111,7 +111,7 @@ function make_kernel {
 function make_zip {
 		cd $REPACK_DIR
 		cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
-		zip -r ~/xero/Builds/Foxy-cancro-$FOXY_F-$(date +%d-%m_%H%M).zip *
+		zip -r ~/xero/Builds/$FOXY_F/Foxy-cancro-$FOXY_F-$(date +%d-%m_%H%M).zip *
 }
 
 function copy_modules {
