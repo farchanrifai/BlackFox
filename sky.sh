@@ -111,7 +111,7 @@ function make_kernel {
 function make_zip {
 		cd $REPACK_DIR
 		cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
-		zip -r ~/xero/Builds/$SKYNET_F/Skynet™-cancro-$SKYNET_F-$(date +%d-%m_%H%M).zip *
+		zip -r ~/xero/Builds/$SKYNET_F/zdx™-cancro-$SKYNET_F-$(date +%d%m).zip *
 }
 
 function copy_modules {
