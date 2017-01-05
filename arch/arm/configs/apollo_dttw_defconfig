@@ -634,7 +634,10 @@ CONFIG_MSM_IOMMU_V1=y
 CONFIG_MSM_IOMMU_PMON=y
 CONFIG_IOMMU_PGTABLES_L2=y
 CONFIG_MSM_IOMMU_VBIF_CHECK=y
+<<<<<<< HEAD:arch/arm/configs/apollo_dttw_defconfig
 CONFIG_ADRENO_IDLER=y
+=======
+>>>>>>> ef079f7... defconfig:enable adreno idler:arch/arm/configs/cyanogen_cancro_defconfig
 CONFIG_BIF=y
 CONFIG_BIF_QPNP=y
 CONFIG_IIO=y
@@ -712,4 +715,5 @@ CONFIG_DEFAULT_TCP_CONG="westwood"
 CONFIG_FORCE_FAST_CHARGE=y
 CONFIG_HOTPLUG_CPU=y
 CONFIG_INTELLI_PLUG=y
+CONFIG_ADRENO_IDLER=y
 
