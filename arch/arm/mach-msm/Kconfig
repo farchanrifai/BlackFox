@@ -3070,6 +3070,14 @@ config FORCE_FAST_CHARGE
 	 A simple sysfs interface to force adapters that
 	 are detected as USB to charge as AC.
 
+config MSM_HOTPLUG
+	bool "MSM hotplug driver"
+	depends on HOTPLUG_CPU
+	default n
+	help
+	  The MSM hotplug driver controls on-/offlining of additional cores based
+	  on current cpu load.
+
 config KERNEL_TEXT_MPU_PROT
 	bool "Enable xpu protection of kernel r/o sections"
 	help
