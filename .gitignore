@@ -99,6 +99,8 @@ x509.genkey
 # Kconfig presets
  all.config
 *.zip
-/anykernel/zImage
+*zImage
+/zip
+/zip/zImage
 /anykernel/dtb
 /anykernel/BlackFox*
