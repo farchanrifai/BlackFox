@@ -42,9 +42,9 @@ COMPILER="/home/farchan/arm-eabi-5.3/bin"
 
 ###########################################################################
 # Kernel Details
-BASE_SKYNET_VER="Skynet"
-VER="v1"
-SKYNET_VER="$BASE_SKYNET_VER$VER"
+BASE_APOLLO_VER="Apollo"
+VER="v2"
+APOLLO_VER="$BASE_Apollo_VER$VER"
 
 ###########################################################################
 # Vars
@@ -52,7 +52,7 @@ export CROSS_COMPILE="$COMPILER/arm-eabi-"
 export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER="Farchan"
-export KBUILD_BUILD_HOST="Froster"
+export KBUILD_BUILD_HOST="WTF"
 
 ###########################################################################
 # Directory naming
@@ -62,13 +62,13 @@ echo -e "${bldred}"
 do
 case "$mchoice" in
 	y|Y )
-		SKYNET_F="dttw"
+		APOLLO_F="dttw"
 		echo
 		echo "Named dttw"
 		break
 		;;
 	n|N )
-		SKYNET_F="no_dttw"
+		APOLLO_F="no_dttw"
 		echo
 		echo "Named no_dttw"
 		break
@@ -86,7 +86,7 @@ done
 #STRIP=/toolchain-path/arm-eabi-strip
 STRIP=$COMPILER/arm-eabi-strip
 KERNEL_DIR=`pwd`
-REPACK_DIR="$KERNEL_DIR/zip/$SKYNET_F/kernel_zip"
+REPACK_DIR="$KERNEL_DIR/zip/$APOLLO_F/kernel_zip"
 DTBTOOL_DIR="$KERNEL_DIR/zip"
 ZIMAGE_DIR="$KERNEL_DIR/arch/arm/boot"
 
@@ -111,7 +111,7 @@ function make_kernel {
 function make_zip {
 		cd $REPACK_DIR
 		cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
-		zip -r ~/xero/Builds/$SKYNET_F/zdx™-cancro-$SKYNET_F-$(date +%d%m).zip *
+		zip -r ~/xero/Builds/$APOLLO_F/zdx™-cancro-$APOLLO_F-$(date +%d%m).zip *
 }
 
 function copy_modules {
@@ -129,7 +129,7 @@ echo -e "${bldred}"; echo -e "${blink_red}"; echo "$AK_VER"; echo -e "${restore}
 
 echo -e "${bldgrn}"
 echo "-----------------"
-echo "Making SKYNET Kernel:"
+echo "Making APOLLO Kernel:"
 echo "-----------------"
 echo -e "${restore}"
 
@@ -185,11 +185,11 @@ case "$dchoice" in
 esac
 done
 echo -e "${bldgrn}"
-echo "Skynet-cancro-$SKYNET_F-$(date +%d-%m_%H%M).zip"
+echo "Apollo-cancro-$APOLLO_F-$(date +%d-%m_%H%M).zip"
 echo -e "${bldred}"
 echo "################################################################################"
 echo -e "${bldgrn}"
-echo "-------------------------Skynet Kernel Compiled in:-----------------------------"
+echo "-------------------------Apollo Kernel Compiled in:-----------------------------"
 echo -e "${bldred}"
 echo "################################################################################"
 echo -e "${restore}"
