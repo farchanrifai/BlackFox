@@ -111,7 +111,7 @@ function make_kernel {
 function make_zip {
 		cd $REPACK_DIR
 		cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
-		zip -r ~/xero/Builds/$APOLLO_F/zdx™-cancro-$APOLLO_F-$(date +%d%m).zip *
+		zip -r ~/xero/Builds/$APOLLO_F/Apollo-cancro-$(date +%d%m%y).zip *
 }
 
 function copy_modules {
