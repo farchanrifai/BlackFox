@@ -625,6 +625,7 @@ struct mxt_data {
 	u8 lockdown_info[MXT_LOCKDOWN_SIZE];
 	u8 userdata_info[MXT_USERDATA_SIZE];
 	bool firmware_updated;
+	bool irq_enabled;
 	bool keys_off;
 	bool hw_wakeup;
 	bool screen_off;
@@ -3302,7 +3303,10 @@ static ssize_t mxt_update_firmware(struct device *dev,
 	}
 
 	dev_info(dev, "Identify firmware name :%s\n", fw_name);
-	mxt_disable_irq(data);
+	if(likely(data->irq_enabled)) {
+		disable_irq(data->irq);
+		data->irq_enabled=false;
+	}
 
 	error = mxt_load_fw(dev, fw_name);
 	if (error) {
@@ -3326,7 +3330,11 @@ static ssize_t mxt_update_firmware(struct device *dev,
 	}
 
 	if (data->state == APPMODE) {
-		mxt_enable_irq(data);
+		
+		if (likely(!data->irq_enabled)) {
+			enable_irq(data->irq);
+			data->irq_enabled=true;
+		}
 	}
 
 	kfree(fw_name);
@@ -4689,6 +4697,12 @@ static int mxt_suspend(struct device *dev)
 	struct mxt_data *data = i2c_get_clientdata(client);
 	struct input_dev *input_dev = data->input_dev;
 
+
+	if(likely(data->irq_enabled)) {
+		disable_irq(client->irq);
+		data->irq_enabled=false;
+	}
+
 	if (data->pdata->cut_off_power) {
 		/* In the power is cut off with LCD off, wake up gesture can not be used */
 		mutex_lock(&input_dev->mutex);
@@ -4830,6 +4844,11 @@ static int mxt_resume(struct device *dev)
 
 		data->is_stopped = false;
 		mutex_unlock(&input_dev->mutex);
+
+		if (likely(!data->irq_enabled)) {
+		enable_irq(client->irq);
+		data->irq_enabled=true;
+
 	}
 	return 0;
 }
@@ -5515,6 +5534,8 @@ retry:
 	data->screen_off = false;
 
 	device_init_wakeup(&client->dev, 1);
+	
+	data->irq_enabled = true;
 
 	error = sysfs_create_group(&client->dev.kobj, &mxt_attr_group);
 	if (error) {
@@ -5622,7 +5643,11 @@ static void mxt_shutdown(struct i2c_client *client)
 {
 	struct mxt_data *data = i2c_get_clientdata(client);
 
-	mxt_disable_irq(data);
+	if(likely(data->irq_enabled)) {
+		disable_irq(data->irq);
+		data->irq_enabled=false;
+	}
+
 	data->state = SHUTDOWN;
 }
 
