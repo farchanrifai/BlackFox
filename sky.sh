@@ -111,7 +111,7 @@ function make_kernel {
 function make_zip {
 		cd $REPACK_DIR
 		cp -vr $ZIMAGE_DIR/$KERNEL $REPACK_DIR/zImage
-		zip -r ~/xero/Builds/$APOLLO_F/Apollo-cancro-$(date +%d%m%y).zip *
+		zip -r ~/xero/Builds/$APOLLO_F/Apollo-cancro-$(date +%d%m%y_%H%M).zip *
 }
 
 function copy_modules {
@@ -185,7 +185,7 @@ case "$dchoice" in
 esac
 done
 echo -e "${bldgrn}"
-echo "Apollo-cancro-$APOLLO_F-$(date +%d-%m_%H%M).zip"
+echo "Apollo-cancro-$(date +%d%m%y_%H%M).zip"
 echo -e "${bldred}"
 echo "################################################################################"
 echo -e "${bldgrn}"
