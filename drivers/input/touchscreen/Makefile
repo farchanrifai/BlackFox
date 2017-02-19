@@ -87,3 +87,4 @@ obj-$(CONFIG_TOUCHSCREEN_PREVENT_SLEEP)		+= wake_helpers.o
 obj-$(CONFIG_TOUCHSCREEN_SWEEP2WAKE)		+= sweep2wake.o
 obj-$(CONFIG_TOUCHSCREEN_DOUBLETAP2WAKE)		+= doubletap2wake.o
 obj-$(CONFIG_TOUCHSCREEN_GT9XX)		+= gt9xx/
+obj-$(CONFIG_STATE_NOTIFIER)		+= state_notifier.o
