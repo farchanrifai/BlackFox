@@ -33,7 +33,7 @@ clear
 
 ###########################################################################
 # Resources
-THREAD="-j10"
+THREAD="-j12"
 KERNEL="zImage"
 OPT="CONFIG_NO_ERROR_ON_MISMATCH=y"
 DTBIMAGE="dt.img"
