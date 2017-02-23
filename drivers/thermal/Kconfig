@@ -130,3 +130,10 @@ config THERMAL_MONITOR_SIMPLE
 	  via a specified ADC channel on the VADC device, and limits the max frequency
 	  of the CPU cores accordingly. The code is simple, allows for up to 8 throttling
 	  steps, and is completely configurable via sysfs.
+
+config INTELLI_THERMAL_V2
+	bool "Better thermal monitor for MSM"
+	depends on THERMAL_TSENS8974
+	depends on CPU_FREQ_MSM
+	default n
+	help

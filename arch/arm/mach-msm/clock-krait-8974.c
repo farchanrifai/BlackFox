@@ -32,6 +32,11 @@
 #include "clock-krait.h"
 #include "clock.h"
 
+#ifdef CONFIG_SPEED_LEVEL_INTERFACE
+int speed_level = -1;
+module_param(speed_level, int, S_IRUGO);
+#endif
+
 /* Clock inputs coming into Krait subsystem */
 DEFINE_FIXED_DIV_CLK(hfpll_src_clk, 1, NULL);
 DEFINE_FIXED_DIV_CLK(acpu_aux_clk, 2, NULL);
@@ -593,8 +598,8 @@ static unsigned int pvs_config_ver;
 module_param(pvs_config_ver, uint, S_IRUGO);
 
 #ifdef CONFIG_MSM_CPU_VOLTAGE_CONTROL
-#define CPU_VDD_MAX	1150
-#define CPU_VDD_MIN	675
+#define CPU_VDD_MAX	1450
+#define CPU_VDD_MIN	475
 
 extern int use_for_scaling(unsigned int freq);
 static unsigned int cnt;

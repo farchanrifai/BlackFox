@@ -4631,14 +4631,6 @@ int taiko_write(struct snd_soc_codec *codec, unsigned int reg,
 				reg, ret);
 	}
 
-#ifdef CONFIG_SOUND_CONTROL_HAX_3_GPL
-	/* In case of no reg access, override with cache value */
-	if (!snd_hax_reg_access(reg) &&
-			snd_hax_cache_read(reg) != -1)
-		value = snd_hax_cache_read(reg);
-	else
-		snd_hax_cache_write(reg, value);
-#endif
 	return wcd9xxx_reg_write(&wcd9xxx->core_res, reg, value);
 }
 
