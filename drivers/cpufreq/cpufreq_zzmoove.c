@@ -32,7 +32,7 @@
 // #define DISABLE_POWER_MANAGEMENT
 
 // AP: use msm8974 lcd status notifier
-#define USE_LCD_NOTIFIER
+//#define USE_LCD_NOTIFIER
 
 #include <linux/cpu.h>
 #ifdef USE_LCD_NOTIFIER
@@ -76,19 +76,19 @@
 #endif /* ENABLE_INPUTBOOSTER */
 
 // Yank: enable/disable sysfs interface to display current zzmoove version
-#define ZZMOOVE_VERSION "develop-24.09.15"
+#define ZZMOOVE_VERSION "1.0 beta8"
 
 // ZZ: support for 2,4,6 or 8 cores (this will enable/disable hotplug threshold tuneables and limit hotplug max limit tuneable)
 #define MAX_CORES					(4)
 
 // ZZ: enable/disable hotplug support
-#define ENABLE_HOTPLUGGING
+//#define ENABLE_HOTPLUGGING
 
 // ZZ: enable support for native hotplugging on snapdragon platform
 #define SNAP_NATIVE_HOTPLUGGING
 
 // ZZ: enable for sources with backported cpufreq implementation of 3.10 kernel
-// #define CPU_IDLE_TIME_IN_CPUFREQ
+#define CPU_IDLE_TIME_IN_CPUFREQ
 
 // ZZ: enable/disable music limits
 #define ENABLE_MUSIC_LIMITS
@@ -5244,7 +5244,6 @@ static ssize_t store_inputboost_typingbooster_up_threshold(struct kobject *a, st
 	return count;
 }
 
-#ifdef ENABLE_HOTPLUGGING
 // ff: added tuneable inputboost_typingbooster_cores -> possible values: range from 0 disabled to 4, if not set default is 0
 static ssize_t store_inputboost_typingbooster_cores(struct kobject *a, struct attribute *b,
 														   const char *buf, size_t count)
@@ -5271,7 +5270,6 @@ static ssize_t store_inputboost_typingbooster_cores(struct kobject *a, struct at
 	dbs_tuners_ins.inputboost_typingbooster_cores = input;
 	return count;
 }
-#endif /* ENABLE_HOTPLUGGING */
 #endif /* ENABLE_INPUTBOOSTER */
 
 #ifdef ENABLE_MUSIC_LIMITS
@@ -8968,7 +8966,7 @@ static int cpufreq_governor_dbs(struct cpufreq_policy *policy,
 		   &dbs_attr_group);
 #if defined(CONFIG_HAS_EARLYSUSPEND) && !defined(USE_LCD_NOTIFIER) && !defined(DISABLE_POWER_MANAGEMENT)
 		unregister_early_suspend(&_powersave_early_suspend);
-#elif defined(CONFIG_POWERSUSPEND) && !defined(USE_LCD_NOTIFIER) && !defined(DISABLE_POWER_MANAGEMENT) || defined(CONFIG_POWERSUSPEND) && defined(USE_LCD_NOTIFIER) && !defined(DISABLE_POWER_MANAGEMENT)
+#elif defined(CONFIG_POWERSUSPEND) && !defined(USE_LCD_NOTIFIER) && !defined(DISABLE_POWER_MANAGEMENT)
 		if (cpu == 0)
 		    unregister_power_suspend(&powersave_powersuspend);
 #endif /* defined(CONFIG_HAS_EARLYSUSPEND)... */
